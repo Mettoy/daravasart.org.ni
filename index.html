@@ -3,238 +3,279 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Darava's Art | Diseños con Propósito</title>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <title>Darava's Art | Estilo & Fe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --fondo: #f9f4f0;
-            --primario: #e89980; /* Terracota suave */
-            --secundario: #6b8e23; /* Verde oliva/salvia */
-            --oscuro: #5d4a44;
-            --blanco: #ffffff;
+            --bg: #f4f1ee; /* Arena muy claro */
+            --accent: #2c2c2c; /* Negro suave */
+            --neutral: #d9d4cf; /* Gris piedra */
+            --white: #ffffff;
+            --text-light: #7a7a7a;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Quicksand', sans-serif;
-            background-color: var(--fondo);
-            color: var(--oscuro);
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg);
+            color: var(--accent);
             overflow-x: hidden;
         }
 
-        /* --- MENÚ PLEGABLE --- */
-        .menu-btn {
+        /* --- MENÚ PLEGABLE (OVERLAY) --- */
+        .menu-toggle {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 100;
-            background: var(--primario);
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
+            top: 30px;
+            right: 40px;
+            z-index: 1000;
             cursor: pointer;
-            font-weight: bold;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            background: none;
+            border: none;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
         }
 
-        .side-menu {
+        .overlay {
             position: fixed;
             top: 0;
-            right: -100%;
-            width: 250px;
+            left: 0;
+            width: 100%;
             height: 100%;
-            background: var(--oscuro);
-            z-index: 99;
-            transition: 0.5s;
-            padding-top: 80px;
+            background: var(--white);
             display: flex;
-            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+            transform: translateY(-100%);
+            transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
         }
 
-        .side-menu.active { right: 0; }
+        .overlay.active { transform: translateY(0); }
 
-        .side-menu a {
-            padding: 15px 30px;
-            color: var(--fondo);
+        .overlay nav a {
+            display: block;
+            font-family: 'Tenor Sans', sans-serif;
+            font-size: 2.5rem;
             text-decoration: none;
-            font-size: 1.2rem;
+            color: var(--accent);
+            margin: 20px 0;
+            text-align: center;
             transition: 0.3s;
         }
 
-        .side-menu a:hover { background: var(--primario); }
+        .overlay nav a:hover { opacity: 0.5; }
 
         /* --- SECCIONES --- */
         section {
+            padding: 100px 10%;
             min-height: 100vh;
-            padding: 80px 10%;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            text-align: center;
+        }
+
+        .fade-in {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(40px);
             transition: all 1s ease-out;
         }
 
-        section.visible {
+        .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* --- HOME / BIENVENIDA --- */
+        /* --- HOME --- */
         .home {
-            background: linear-gradient(135deg, #fdf4f2 0%, #e89980 100%);
-            color: var(--oscuro);
+            text-align: center;
+            background: var(--bg);
         }
 
         .home h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            margin-bottom: 10px;
+            font-family: 'Tenor Sans', sans-serif;
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 400;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
         }
 
-        .home p { font-size: 1.2rem; letter-spacing: 2px; }
+        .divider {
+            width: 50px;
+            height: 1px;
+            background: var(--accent);
+            margin: 20px auto;
+        }
 
         /* --- QUIÉN SOY --- */
-        .quien-soy { background: var(--blanco); }
-        
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            background: var(--acento);
-            border-radius: 50%;
-            margin-bottom: 20px;
-            border: 5px solid var(--fondo);
-            display: flex;
+        .about {
+            background: var(--white);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
             align-items: center;
-            justify-content: center;
-            font-size: 3rem;
+        }
+
+        .about-text h2 {
+            font-family: 'Tenor Sans', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .about-text p {
+            font-weight: 200;
+            line-height: 1.8;
+            color: var(--text-light);
+            font-size: 1.1rem;
         }
 
         /* --- SERVICIOS --- */
-        .servicios { background: #f0ebe3; }
-        
-        .grid-servicios {
+        .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
-            width: 100%;
-            margin-top: 30px;
+            margin-top: 50px;
         }
 
-        .card {
-            background: var(--blanco);
-            padding: 30px;
-            border-radius: 20px;
-            border-bottom: 5px solid var(--secundario);
-            transition: 0.3s;
+        .service-card {
+            border: 1px solid var(--neutral);
+            padding: 40px 20px;
+            text-align: center;
+            transition: 0.4s;
         }
-        .card:hover { transform: scale(1.05); }
+
+        .service-card:hover {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        .service-card h3 {
+            font-family: 'Tenor Sans', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
 
         /* --- COTIZAR --- */
-        .cotizar {
-            background: var(--oscuro);
-            color: var(--fondo);
+        .quote {
+            text-align: center;
+            background: var(--neutral);
         }
 
-        .btn-ws {
-            background: #25d366;
-            color: white;
-            padding: 15px 40px;
-            border-radius: 50px;
+        .btn-quote {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 20px 50px;
+            background: var(--accent);
+            color: var(--white);
             text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin-top: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            transition: 0.3s;
-        }
-        .btn-ws:hover { transform: scale(1.1); background: #128c7e; }
-
-        h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: var(--primario);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+            transition: 0.4s;
         }
 
+        .btn-quote:hover {
+            background: none;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .about { grid-template-columns: 1fr; text-align: center; }
+            .services-grid { grid-template-columns: 1fr; }
+            .home h1 { font-size: 2.5rem; }
+        }
     </style>
 </head>
 <body>
 
-    <button class="menu-btn" onclick="toggleMenu()">MENÚ</button>
+    <button class="menu-toggle" onclick="toggleMenu()">Menu // Menu</button>
 
-    <div class="side-menu" id="sideMenu">
-        <a href="#inicio" onclick="toggleMenu()">Inicio</a>
-        <a href="#quien-soy" onclick="toggleMenu()">Quién Soy</a>
-        <a href="#servicios" onclick="toggleMenu()">Servicios</a>
-        <a href="#cotizar" onclick="toggleMenu()">Cotizar</a>
+    <div class="overlay" id="overlay">
+        <nav>
+            <a href="#home" onclick="toggleMenu()">Inicio</a>
+            <a href="#about" onclick="toggleMenu()">Quién Soy</a>
+            <a href="#services" onclick="toggleMenu()">Servicios</a>
+            <a href="#quote" onclick="toggleMenu()">Cotizar</a>
+        </nav>
     </div>
 
-    <section id="inicio" class="home visible">
-        <h1>Darava's Art</h1>
-        <p>Sublimación con propósito cristiano</p>
-        <div style="margin-top: 30px; font-size: 2rem;">🕊️</div>
+    <section id="home" class="home">
+        <div class="fade-in">
+            <p style="letter-spacing: 5px; font-weight: 200; margin-bottom: 10px;">DARAVA'S ART</p>
+            <h1>Sublimación</h1>
+            <div class="divider"></div>
+            <p style="font-style: italic; color: var(--text-light);">"Diseños que trascienden"</p>
+        </div>
     </section>
 
-    <section id="quien-soy" class="quien-soy">
-        <div class="profile-img">🎨</div>
-        <h2>Quién Soy</h2>
-        <p style="max-width: 600px;">
-            Soy una persona apasionada por el arte y la fe. En Darava's Art, mi misión es simple: 
-            usar mis manos para crear diseños que no solo adornen, sino que hablen del amor de Dios. 
-            Cada pieza que sale de mi taller está hecha con oración y dedicación para que llegue a tu hogar como una bendición.
-        </p>
+    <section id="about" class="about">
+        <div class="fade-in">
+            <div style="width: 100%; height: 400px; background: var(--neutral); border-radius: 2px;">
+                <div style="display: flex; justify-content: center; align-items: center; height: 100%; color: #999;">Imagen</div>
+            </div>
+        </div>
+        <div class="about-text fade-in">
+            <h2>Quién Soy</h2>
+            <p>
+                Soy un alma creativa comprometida con la excelencia y la fe. En Darava's Art no solo personalizamos objetos; creamos puentes para compartir un mensaje eterno. 
+                Cada diseño es pensado para personas que buscan sobriedad, elegancia y un recordatorio diario de la palabra de Dios en su vida cotidiana.
+            </p>
+        </div>
     </section>
 
-    <section id="servicios" class="servicios">
-        <h2>Lo que hacemos</h2>
-        <div class="grid-servicios">
-            <div class="card">
-                <h3>Personales</h3>
-                <p>Para tu día a día: tazas, termos y detalles que te recuerden Sus promesas.</p>
-            </div>
-            <div class="card">
-                <h3>Eclesiásticos</h3>
-                <p>Apoyo a iglesias y ministerios con uniformes y recordatorios para eventos sagrados.</p>
-            </div>
-            <div class="card">
-                <h3>Empresariales</h3>
-                <p>Llevamos tus valores corporativos a productos de alta calidad para tus clientes.</p>
+    <section id="services">
+        <div class="fade-in" style="text-align: center;">
+            <h2 style="font-family: 'Tenor Sans'; font-size: 2.5rem;">Servicios</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Personales</h3>
+                    <p>Detalles únicos para el hogar y el alma.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Eclesiásticos</h3>
+                    <p>Identidad visual para ministerios y eventos.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Empresariales</h3>
+                    <p>Calidad premium para marcas con valores.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="cotizar" class="cotizar">
-        <h2>¿Tienes un proyecto?</h2>
-        <p>Hagámoslo realidad. Cuéntame tu idea y te ayudaré con un presupuesto a tu medida.</p>
-        <a href="https://wa.me/tu-numero-aqui" class="btn-ws">Solicitar Cotización</a>
+    <section id="quote" class="quote">
+        <div class="fade-in">
+            <h2 style="font-family: 'Tenor Sans';">Presupuestos</h2>
+            <p style="max-width: 500px; margin: 20px auto;">Permítenos dar vida a tus ideas con un acabado profesional y elegante.</p>
+            <a href="https://wa.me/tu-numero" class="btn-quote">Consultar ahora</a>
+        </div>
     </section>
 
     <script>
-        // Función para el menú
         function toggleMenu() {
-            document.getElementById('sideMenu').classList.toggle('active');
+            document.getElementById('overlay').classList.toggle('active');
         }
 
-        // Animación de aparición al hacer scroll
-        const sections = document.querySelectorAll('section');
-        const observerOptions = { threshold: 0.3 };
+        // Animación de aparición al scroll
+        const faders = document.querySelectorAll('.fade-in');
+        const appearOptions = { threshold: 0.2 };
 
-        const observer = new IntersectionObserver((entries) => {
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
             entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('visible');
+                appearOnScroll.unobserve(entry.target);
             });
-        }, observerOptions);
+        }, appearOptions);
 
-        sections.forEach(section => {
-            observer.observe(section);
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
         });
     </script>
 
