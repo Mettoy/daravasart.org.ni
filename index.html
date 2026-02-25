@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Darava's Art | Estilo & Fe</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
+    <title>Darava's Art | Diseño con Propósito</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #f4f1ee; /* Arena muy claro */
-            --accent: #2c2c2c; /* Negro suave */
-            --neutral: #d9d4cf; /* Gris piedra */
-            --white: #ffffff;
-            --text-light: #7a7a7a;
+            --nude: #f2ede9;
+            --cafe-suave: #a69082;
+            --texto: #4a4440;
+            --blanco: #ffffff;
+            --acento: #8c786a;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -19,264 +19,245 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--bg);
-            color: var(--accent);
-            overflow-x: hidden;
+            background-color: var(--nude);
+            color: var(--texto);
+            line-height: 1.5;
         }
 
-        /* --- MENÚ PLEGABLE (OVERLAY) --- */
-        .menu-toggle {
+        /* --- MENÚ PLEGABLE --- */
+        .header-nav {
             position: fixed;
-            top: 30px;
-            right: 40px;
+            top: 0;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(242, 237, 233, 0.9);
             z-index: 1000;
+        }
+
+        .brand-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--acento);
+            text-decoration: none;
+        }
+
+        .menu-btn {
             cursor: pointer;
-            background: none;
+            background: var(--cafe-suave);
+            color: white;
             border: none;
-            font-size: 0.7rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
         }
 
         .overlay {
             position: fixed;
             top: 0;
-            left: 0;
+            right: -100%;
             width: 100%;
             height: 100%;
-            background: var(--white);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 999;
-            transform: translateY(-100%);
-            transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
-        }
-
-        .overlay.active { transform: translateY(0); }
-
-        .overlay nav a {
-            display: block;
-            font-family: 'Tenor Sans', sans-serif;
-            font-size: 2.5rem;
-            text-decoration: none;
-            color: var(--accent);
-            margin: 20px 0;
-            text-align: center;
-            transition: 0.3s;
-        }
-
-        .overlay nav a:hover { opacity: 0.5; }
-
-        /* --- SECCIONES --- */
-        section {
-            padding: 100px 10%;
-            min-height: 100vh;
+            background: var(--blanco);
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
+            z-index: 999;
+            transition: 0.5s ease-in-out;
         }
 
-        .fade-in {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 1s ease-out;
+        .overlay.active { right: 0; }
+
+        .overlay a {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            text-decoration: none;
+            color: var(--texto);
+            margin: 15px 0;
+            transition: 0.3s;
         }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* --- HOME --- */
-        .home {
+        /* --- SECCIÓN INICIO --- */
+        .hero {
+            height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            background: var(--bg);
+            padding: 0 10%;
+            background: linear-gradient(to bottom, #fdfcfb 0%, #f2ede9 100%);
         }
 
-        .home h1 {
-            font-family: 'Tenor Sans', sans-serif;
-            font-size: clamp(3rem, 8vw, 5rem);
-            font-weight: 400;
-            letter-spacing: 8px;
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 10vw, 5rem);
+            font-style: italic;
+            color: var(--acento);
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            margin-bottom: 20px;
+            opacity: 0.8;
         }
 
-        .divider {
-            width: 50px;
-            height: 1px;
-            background: var(--accent);
-            margin: 20px auto;
-        }
-
-        /* --- QUIÉN SOY --- */
+        /* --- SECCIÓN QUIÉN SOY --- */
         .about {
-            background: var(--white);
+            padding: 60px 10%;
+            background: var(--blanco);
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
             align-items: center;
         }
 
-        .about-text h2 {
-            font-family: 'Tenor Sans', sans-serif;
+        .about-content h2 {
+            font-family: 'Cormorant Garamond', serif;
             font-size: 2.5rem;
-            margin-bottom: 30px;
-        }
-
-        .about-text p {
-            font-weight: 200;
-            line-height: 1.8;
-            color: var(--text-light);
-            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: var(--acento);
         }
 
         /* --- SERVICIOS --- */
+        .services {
+            padding: 60px 5%;
+            text-align: center;
+        }
+
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
-            margin-top: 50px;
+            margin-top: 30px;
         }
 
         .service-card {
-            border: 1px solid var(--neutral);
+            background: var(--blanco);
             padding: 40px 20px;
-            text-align: center;
-            transition: 0.4s;
+            text-decoration: none;
+            color: var(--texto);
+            border-radius: 2px;
+            transition: all 0.4s;
+            border: 1px solid #eee;
+            display: block;
         }
 
         .service-card:hover {
-            background: var(--accent);
-            color: var(--white);
+            background: var(--cafe-suave);
+            color: white;
+            transform: translateY(-5px);
         }
 
         .service-card h3 {
-            font-family: 'Tenor Sans', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
         }
 
         /* --- COTIZAR --- */
-        .quote {
+        .cta {
+            padding: 80px 10%;
+            background: var(--acento);
+            color: white;
             text-align: center;
-            background: var(--neutral);
         }
 
-        .btn-quote {
+        .btn-ws {
             display: inline-block;
-            margin-top: 40px;
-            padding: 20px 50px;
-            background: var(--accent);
-            color: var(--white);
+            margin-top: 25px;
+            padding: 15px 40px;
+            border: 1px solid white;
+            color: white;
             text-decoration: none;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 0.8rem;
-            transition: 0.4s;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            transition: 0.3s;
         }
 
-        .btn-quote:hover {
-            background: none;
-            color: var(--accent);
-            border: 1px solid var(--accent);
-        }
+        .btn-ws:hover { background: white; color: var(--acento); }
 
-        /* --- RESPONSIVE --- */
+        footer { padding: 30px; text-align: center; font-size: 0.8rem; opacity: 0.6; }
+
         @media (max-width: 768px) {
-            .about { grid-template-columns: 1fr; text-align: center; }
-            .services-grid { grid-template-columns: 1fr; }
-            .home h1 { font-size: 2.5rem; }
+            .hero h1 { font-size: 3.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <button class="menu-toggle" onclick="toggleMenu()">Menu // Menu</button>
+    <header class="header-nav">
+        <a href="#" class="brand-name">Darava's Art</a>
+        <button class="menu-btn" onclick="toggleMenu()">MENÚ</button>
+    </header>
 
-    <div class="overlay" id="overlay">
-        <nav>
-            <a href="#home" onclick="toggleMenu()">Inicio</a>
-            <a href="#about" onclick="toggleMenu()">Quién Soy</a>
-            <a href="#services" onclick="toggleMenu()">Servicios</a>
-            <a href="#quote" onclick="toggleMenu()">Cotizar</a>
-        </nav>
+    <div class="overlay" id="menuOverlay">
+        <a href="#inicio" onclick="toggleMenu()">Inicio</a>
+        <a href="#quien-soy" onclick="toggleMenu()">Quién Soy</a>
+        <a href="#servicios" onclick="toggleMenu()">Servicios</a>
+        <a href="#cotizar" onclick="toggleMenu()">Cotizar</a>
+        <button onclick="toggleMenu()" style="margin-top: 40px; background: none; border: none; cursor: pointer; color: var(--cafe-suave);">Cerrar</button>
     </div>
 
-    <section id="home" class="home">
-        <div class="fade-in">
-            <p style="letter-spacing: 5px; font-weight: 200; margin-bottom: 10px;">DARAVA'S ART</p>
-            <h1>Sublimación</h1>
-            <div class="divider"></div>
-            <p style="font-style: italic; color: var(--text-light);">"Diseños que trascienden"</p>
-        </div>
+    <section id="inicio" class="hero">
+        <h1>Darava's Art</h1>
+        <p>Sublimación que inspira el alma</p>
     </section>
 
-    <section id="about" class="about">
-        <div class="fade-in">
-            <div style="width: 100%; height: 400px; background: var(--neutral); border-radius: 2px;">
-                <div style="display: flex; justify-content: center; align-items: center; height: 100%; color: #999;">Imagen</div>
-            </div>
+    <section id="quien-soy" class="about">
+        <div style="background: var(--nude); height: 350px; display: flex; align-items: center; justify-content: center; font-style: italic; color: var(--cafe-suave);">
+            [ Imagen Representativa ]
         </div>
-        <div class="about-text fade-in">
+        <div class="about-content">
             <h2>Quién Soy</h2>
-            <p>
-                Soy un alma creativa comprometida con la excelencia y la fe. En Darava's Art no solo personalizamos objetos; creamos puentes para compartir un mensaje eterno. 
-                Cada diseño es pensado para personas que buscan sobriedad, elegancia y un recordatorio diario de la palabra de Dios en su vida cotidiana.
-            </p>
+            <p>Hola, es un gusto saludarte. Soy el corazón detrás de <b>Darava's Art</b>. Mi emprendimiento nace del deseo de llevar la Palabra de Dios a los objetos que usamos a diario.</p>
+            <br>
+            <p>Creo firmemente que una frase o un versículo en el momento justo puede cambiar tu día. Por eso, trabajo con dedicación para que cada pieza sea elegante, duradera y llena de propósito.</p>
         </div>
     </section>
 
-    <section id="services">
-        <div class="fade-in" style="text-align: center;">
-            <h2 style="font-family: 'Tenor Sans'; font-size: 2.5rem;">Servicios</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3>Personales</h3>
-                    <p>Detalles únicos para el hogar y el alma.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Eclesiásticos</h3>
-                    <p>Identidad visual para ministerios y eventos.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Empresariales</h3>
-                    <p>Calidad premium para marcas con valores.</p>
-                </div>
-            </div>
+    <section id="servicios" class="services">
+        <h2 style="font-family: 'Cormorant Garamond'; font-size: 2.5rem;">Nuestros Servicios</h2>
+        <p style="margin-bottom: 30px; opacity: 0.7;">Selecciona una categoría para ver más detalles</p>
+        
+        <div class="services-grid">
+            <a href="per.html" class="service-card">
+                <h3>Personales</h3>
+                <p>Tazas, termos y detalles para ti o para regalar bendiciones.</p>
+            </a>
+            <a href="ecl.html" class="service-card">
+                <h3>Eclesiásticos</h3>
+                <p>Identidad y uniformes para ministerios, retiros y eventos.</p>
+            </a>
+            <a href="emp.html" class="service-card">
+                <h3>Empresariales</h3>
+                <p>Regalos corporativos y uniformes con valores y calidad.</p>
+            </a>
         </div>
     </section>
 
-    <section id="quote" class="quote">
-        <div class="fade-in">
-            <h2 style="font-family: 'Tenor Sans';">Presupuestos</h2>
-            <p style="max-width: 500px; margin: 20px auto;">Permítenos dar vida a tus ideas con un acabado profesional y elegante.</p>
-            <a href="https://wa.me/tu-numero" class="btn-quote">Consultar ahora</a>
-        </div>
+    <section id="cotizar" class="cta">
+        <h2 style="font-family: 'Cormorant Garamond'; font-size: 2.5rem;">¿Deseas una cotización?</h2>
+        <p>Estoy aquí para escucharte y ayudarte a materializar tu idea.</p>
+        <a href="https://wa.me/tunúmero" class="btn-ws">Escribir por WhatsApp</a>
     </section>
+
+    <footer>
+        <p>&copy; 2024 Darava's Art - Diseños hechos con fe.</p>
+    </footer>
 
     <script>
         function toggleMenu() {
-            document.getElementById('overlay').classList.toggle('active');
+            document.getElementById('menuOverlay').classList.toggle('active');
         }
-
-        // Animación de aparición al scroll
-        const faders = document.querySelectorAll('.fade-in');
-        const appearOptions = { threshold: 0.2 };
-
-        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) return;
-                entry.target.classList.add('visible');
-                appearOnScroll.unobserve(entry.target);
-            });
-        }, appearOptions);
-
-        faders.forEach(fader => {
-            appearOnScroll.observe(fader);
-        });
     </script>
 
 </body>
