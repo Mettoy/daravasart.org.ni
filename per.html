@@ -19,6 +19,7 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         
         body {
             font-family: 'Montserrat', sans-serif;
@@ -35,185 +36,200 @@
             align-items: center;
             background: var(--white);
             border-bottom: 1px solid var(--soft);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .back-link {
             text-decoration: none;
             color: var(--text);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             letter-spacing: 2px;
             text-transform: uppercase;
             font-weight: 600;
+            transition: 0.3s;
         }
 
-        .logo-small {
+        .back-link:hover { color: var(--accent); }
+
+        .logo-nav {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem;
-            font-style: italic;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--text);
         }
 
-        /* --- HEADER SECCIÓN --- */
+        /* --- CABECERA --- */
         header {
-            padding: 60px 10% 40px;
+            padding: 80px 10% 40px;
             text-align: center;
         }
 
         header h1 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 3.5rem;
+            font-size: clamp(2.5rem, 8vw, 4rem);
             font-weight: 400;
-            margin-bottom: 10px;
-        }
-
-        .subtitle {
-            font-size: 0.9rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: var(--accent);
-        }
-
-        /* --- CONTENIDO --- */
-        .intro-text {
-            max-width: 700px;
-            margin: 0 auto 60px;
-            text-align: center;
-            font-weight: 300;
-            font-size: 1.1rem;
-        }
-
-        /* --- PRODUCTOS (GRID) --- */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            padding: 0 10% 80px;
-        }
-
-        .product-item {
-            background: var(--white);
-            padding: 40px;
-            text-align: center;
-            border: 1px solid var(--soft);
-            transition: 0.4s;
-        }
-
-        .product-item:hover {
-            border-color: var(--accent);
-            transform: translateY(-5px);
-        }
-
-        .product-item i {
-            display: block;
-            font-size: 2.5rem;
             margin-bottom: 15px;
         }
 
-        .product-item h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            margin-bottom: 10px;
+        .divider {
+            width: 40px;
+            height: 1px;
+            background: var(--accent);
+            margin: 20px auto;
         }
 
-        .product-item p {
-            font-size: 0.9rem;
-            color: #777;
+        /* --- GALERÍA DE PRODUCTOS --- */
+        .catalog {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            padding: 20px 10% 100px;
+        }
+
+        .item {
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: var(--text);
+            transition: 0.4s;
+        }
+
+        .img-container {
+            width: 100%;
+            aspect-ratio: 1 / 1.2;
+            overflow: hidden;
+            background: #eee;
             margin-bottom: 20px;
         }
 
-        /* --- BANNER INFERIOR --- */
-        .info-banner {
-            background: var(--text);
-            color: var(--bg);
-            padding: 80px 10%;
-            text-align: center;
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        .info-banner h2 {
+        .item:hover img {
+            transform: scale(1.05);
+        }
+
+        .item h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            margin-bottom: 5px;
+        }
+
+        .item span {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+        }
+
+        /* --- BANNER FINAL --- */
+        .cta-section {
+            background: var(--white);
+            padding: 100px 10%;
+            text-align: center;
+            border-top: 1px solid var(--soft);
+        }
+
+        .cta-section h2 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 2.5rem;
             margin-bottom: 20px;
         }
 
-        .btn-order {
+        .btn-ws {
             display: inline-block;
             margin-top: 30px;
-            padding: 15px 40px;
-            background: var(--accent);
-            color: white;
+            padding: 18px 50px;
+            background: var(--text);
+            color: var(--white);
             text-decoration: none;
-            text-transform: uppercase;
             letter-spacing: 2px;
             font-size: 0.8rem;
+            text-transform: uppercase;
             transition: 0.3s;
         }
 
-        .btn-order:hover {
-            background: #8e7d71;
-        }
+        .btn-ws:hover { background: var(--accent); }
 
         footer {
             padding: 40px;
             text-align: center;
             font-size: 0.7rem;
             letter-spacing: 1px;
-            opacity: 0.6;
+            color: #999;
         }
 
-        @media (max-width: 768px) {
-            header h1 { font-size: 2.5rem; }
+        @media (max-width: 600px) {
+            .catalog { padding: 20px 5% 60px; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="index.html" class="back-link">← Volver</a>
-        <div class="logo-small">Darava's Art</div>
-        <div style="width: 60px;"></div> </nav>
+        <a href="index.html" class="back-link">← Inicio</a>
+        <div class="logo-nav">Darava's Art</div>
+        <div style="width: 50px;"></div>
+    </nav>
 
     <header>
-        <p class="subtitle">Hecho para ti</p>
-        <h1>Servicios Personales</h1>
+        <h1>Detalles Personales</h1>
+        <div class="divider"></div>
+        <p style="max-width: 600px; margin: 0 auto; font-weight: 200;">
+            Cada pieza es una oportunidad para llevar un mensaje de fe. Sublimaciones delicadas diseñadas para acompañar tu día a día con elegancia.
+        </p>
     </header>
 
-    <div class="intro-text">
-        <p>Porque cada detalle cuenta, transformamos tus versículos favoritos, nombres o fechas especiales en piezas de arte que te acompañan cada mañana. La elegancia se une con la fe para crear regalos con alma.</p>
-    </div>
-
-    <div class="products-grid">
-        <div class="product-item">
-            <span>☕</span>
+    <section class="catalog">
+        
+        <div class="item">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1517256011261-514382536319?q=80&w=1000&auto=format&fit=crop" alt="Tazas personalizadas">
+            </div>
+            <span>Cerámica Premium</span>
             <h3>Tazas & Mugs</h3>
-            <p>Comienza tu día con un mensaje de esperanza. Cerámica de alta calidad con acabados finos.</p>
         </div>
 
-        <div class="product-item">
-            <span>👕</span>
-            <h3>Textiles</h3>
-            <p>Camisetas y sudaderas con diseños minimalistas que llevan la palabra de Dios a todas partes.</p>
+        <div class="item">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=1000&auto=format&fit=crop" alt="Hoodies cristianos">
+            </div>
+            <span>Textiles Suaves</span>
+            <h3>Hoodies & Camisetas</h3>
         </div>
 
-        <div class="product-item">
-            <span>📔</span>
-            <h3>Papelería</h3>
-            <p>Agendas y cuadernos personalizados para tus tiempos de oración y estudio bíblico.</p>
+        <div class="item">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1583997053204-c7672e04617c?q=80&w=1000&auto=format&fit=crop" alt="Cuadros y retrateras">
+            </div>
+            <span>Decoración con Propósito</span>
+            <h3>Retrateras & Cuadros</h3>
         </div>
 
-        <div class="product-item">
-            <span>🎁</span>
-            <h3>Regalos Únicos</h3>
-            <p>Termos, rompecabezas y cuadros personalizados para sorprender a tus seres queridos.</p>
+        <div class="item">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1602143394807-a4558e402151?q=80&w=1000&auto=format&fit=crop" alt="Termos sublimados">
+            </div>
+            <span>Acompaña tu camino</span>
+            <h3>Termos & Botellas</h3>
         </div>
-    </div>
 
-    <section class="info-banner">
-        <h2>¿Tienes una idea especial?</h2>
-        <p>No hay pedido pequeño cuando se trata de bendecir a alguien. Cuéntame qué tienes en mente y diseñemos algo único para ti.</p>
-        <a href="https://wa.me/TUNUMERO" class="btn-order">Hacer un pedido</a>
+    </section>
+
+    <section class="cta-section">
+        <h2>¿Deseas personalizar algo único?</h2>
+        <p>Enviamos bendiciones a través de cada entrega. Escríbeme para cotizar tu diseño.</p>
+        <a href="https://wa.me/TUNUMERO" class="btn-ws">Solicitar información</a>
     </section>
 
     <footer>
-        DARAVA'S ART — DETALLES PERSONALES CON PROPÓSITO
+        © 2026 DARAVA'S ART | ELEGANCIA QUE GLORIFICA
     </footer>
 
 </body>
