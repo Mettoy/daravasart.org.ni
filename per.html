@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personales | Darava's Art</title>
+    
+    <link rel="icon" type="image/png" href="https://ibb.co/sdcVm03G">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,400&family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #f8f5f2;
+            --text: #2d2a28;
+            --soft: #e5e0db;
+            --accent: #a69082;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* --- NAVEGACIÓN --- */
+        nav {
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--white);
+            border-bottom: 1px solid var(--soft);
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .logo-small {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+
+        /* --- HEADER SECCIÓN --- */
+        header {
+            padding: 60px 10% 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        /* --- CONTENIDO --- */
+        .intro-text {
+            max-width: 700px;
+            margin: 0 auto 60px;
+            text-align: center;
+            font-weight: 300;
+            font-size: 1.1rem;
+        }
+
+        /* --- PRODUCTOS (GRID) --- */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 0 10% 80px;
+        }
+
+        .product-item {
+            background: var(--white);
+            padding: 40px;
+            text-align: center;
+            border: 1px solid var(--soft);
+            transition: 0.4s;
+        }
+
+        .product-item:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .product-item i {
+            display: block;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .product-item h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .product-item p {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        /* --- BANNER INFERIOR --- */
+        .info-banner {
+            background: var(--text);
+            color: var(--bg);
+            padding: 80px 10%;
+            text-align: center;
+        }
+
+        .info-banner h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .btn-order {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 40px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .btn-order:hover {
+            background: #8e7d71;
+        }
+
+        footer {
+            padding: 40px;
+            text-align: center;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            opacity: 0.6;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="back-link">← Volver</a>
+        <div class="logo-small">Darava's Art</div>
+        <div style="width: 60px;"></div> </nav>
+
+    <header>
+        <p class="subtitle">Hecho para ti</p>
+        <h1>Servicios Personales</h1>
+    </header>
+
+    <div class="intro-text">
+        <p>Porque cada detalle cuenta, transformamos tus versículos favoritos, nombres o fechas especiales en piezas de arte que te acompañan cada mañana. La elegancia se une con la fe para crear regalos con alma.</p>
+    </div>
+
+    <div class="products-grid">
+        <div class="product-item">
+            <span>☕</span>
+            <h3>Tazas & Mugs</h3>
+            <p>Comienza tu día con un mensaje de esperanza. Cerámica de alta calidad con acabados finos.</p>
+        </div>
+
+        <div class="product-item">
+            <span>👕</span>
+            <h3>Textiles</h3>
+            <p>Camisetas y sudaderas con diseños minimalistas que llevan la palabra de Dios a todas partes.</p>
+        </div>
+
+        <div class="product-item">
+            <span>📔</span>
+            <h3>Papelería</h3>
+            <p>Agendas y cuadernos personalizados para tus tiempos de oración y estudio bíblico.</p>
+        </div>
+
+        <div class="product-item">
+            <span>🎁</span>
+            <h3>Regalos Únicos</h3>
+            <p>Termos, rompecabezas y cuadros personalizados para sorprender a tus seres queridos.</p>
+        </div>
+    </div>
+
+    <section class="info-banner">
+        <h2>¿Tienes una idea especial?</h2>
+        <p>No hay pedido pequeño cuando se trata de bendecir a alguien. Cuéntame qué tienes en mente y diseñemos algo único para ti.</p>
+        <a href="https://wa.me/TUNUMERO" class="btn-order">Hacer un pedido</a>
+    </section>
+
+    <footer>
+        DARAVA'S ART — DETALLES PERSONALES CON PROPÓSITO
+    </footer>
+
+</body>
+</html>
