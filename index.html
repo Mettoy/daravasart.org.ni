@@ -1,1 +1,212 @@
-index.html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darava's Art | Sublimación & Diseño</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #fdfbfb;
+            --accent: #d4af37; /* Dorado sutil */
+            --text: #2c2c2c;
+            --soft-gray: #f4f4f4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navegación */
+        nav {
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), 
+                        url('https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&q=80') center/cover;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 4rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            animation: fadeIn 2s ease-in;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #777;
+        }
+
+        /* Galería Minimalista */
+        .gallery {
+            padding: 5rem 10%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            background: var(--soft-gray);
+            aspect-ratio: 1 / 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+            filter: grayscale(20%);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+            filter: grayscale(0%);
+        }
+
+        .item-info {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: white;
+            padding: 0.5rem 1rem;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem;
+            text-align: center;
+            background: #fff;
+            border-top: 1px solid #eee;
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 2.5rem;
+            border: 1px solid var(--text);
+            text-decoration: none;
+            color: var(--text);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            transition: 0.4s;
+        }
+
+        .cta-button:hover {
+            background: var(--text);
+            color: white;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Darava's Art</div>
+        <ul class="nav-links">
+            <li><a href="#">INICIO</a></li>
+            <li><a href="#">PRODUCTOS</a></li>
+            <li><a href="#">PROCESO</a></li>
+            <li><a href="#">CONTACTO</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <h1>Darava's Art</h1>
+        <p>Sublimación Consciente & Arte Personalizado</p>
+        <a href="#contacto" class="cta-button">EXPLORAR COLECCIÓN</a>
+    </section>
+
+    <section class="gallery">
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1576781297209-e8203e482200?auto=format&fit=crop&q=80" alt="Taza sublimada">
+            <div class="item-info">01 / CERÁMICA</div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80" alt="Textil personalizado">
+            <div class="item-info">02 / TEXTILES</div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80" alt="Arte digital">
+            <div class="item-info">03 / DISEÑO</div>
+        </div>
+    </section>
+
+    <footer id="contacto">
+        <p style="font-family: 'Cinzel'; margin-bottom: 1rem;">Contáctanos</p>
+        <p style="font-size: 0.9rem; color: #888;">hola@daravasart.com</p>
+        <div style="margin-top: 2rem;">
+            <p>© 2024 Darava's Art. Elevando lo cotidiano.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
