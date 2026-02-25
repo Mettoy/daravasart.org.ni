@@ -4,176 +4,239 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Darava's Art | Diseños con Propósito</title>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500&family=Playfair+Display:ital,wght@0,400;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --beige-claro: #fcf9f5;
-            --marron-suave: #8e7d71;
-            --texto: #4a4a4a;
+            --fondo: #f9f4f0;
+            --primario: #e89980; /* Terracota suave */
+            --secundario: #6b8e23; /* Verde oliva/salvia */
+            --oscuro: #5d4a44;
             --blanco: #ffffff;
-            --acento: #d4b99b;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Quicksand', sans-serif;
-            background-color: var(--beige-claro);
-            color: var(--texto);
-            line-height: 1.6;
+            background-color: var(--fondo);
+            color: var(--oscuro);
+            overflow-x: hidden;
         }
 
-        /* Header & Logo */
-        header {
-            text-align: center;
-            padding: 3rem 1rem;
-            background: var(--blanco);
+        /* --- MENÚ PLEGABLE --- */
+        .menu-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            background: var(--primario);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        .logo-container h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: var(--marron-suave);
-            letter-spacing: 2px;
+        .side-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 250px;
+            height: 100%;
+            background: var(--oscuro);
+            z-index: 99;
+            transition: 0.5s;
+            padding-top: 80px;
+            display: flex;
+            flex-direction: column;
         }
 
-        .slogan {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--acento);
-            margin-top: 5px;
-        }
+        .side-menu.active { right: 0; }
 
-        /* Hero / Propósito */
-        .intro {
-            max-width: 800px;
-            margin: 4rem auto;
-            text-align: center;
-            padding: 0 2rem;
-        }
-
-        .intro i {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
+        .side-menu a {
+            padding: 15px 30px;
+            color: var(--fondo);
+            text-decoration: none;
             font-size: 1.2rem;
-            display: block;
-            margin-bottom: 1.5rem;
-            color: var(--marron-suave);
+            transition: 0.3s;
         }
 
-        /* Servicios */
-        .servicios-container {
+        .side-menu a:hover { background: var(--primario); }
+
+        /* --- SECCIONES --- */
+        section {
+            min-height: 100vh;
+            padding: 80px 10%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- HOME / BIENVENIDA --- */
+        .home {
+            background: linear-gradient(135deg, #fdf4f2 0%, #e89980 100%);
+            color: var(--oscuro);
+        }
+
+        .home h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+        }
+
+        .home p { font-size: 1.2rem; letter-spacing: 2px; }
+
+        /* --- QUIÉN SOY --- */
+        .quien-soy { background: var(--blanco); }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            background: var(--acento);
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 5px solid var(--fondo);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        /* --- SERVICIOS --- */
+        .servicios { background: #f0ebe3; }
+        
+        .grid-servicios {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            padding: 2rem 10%;
-            margin-bottom: 5rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            width: 100%;
+            margin-top: 30px;
         }
 
         .card {
             background: var(--blanco);
-            padding: 3rem 2rem;
-            text-align: center;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.02);
-            transition: transform 0.3s ease;
-            border: 1px solid #f0eee9;
-        }
-
-        .card:hover { transform: translateY(-5px); }
-
-        .card h3 {
-            font-family: 'Playfair Display', serif;
-            margin-bottom: 1rem;
-            color: var(--marron-suave);
-            font-size: 1.5rem;
-        }
-
-        .card p { font-size: 0.95rem; color: #777; }
-
-        /* Banner de Versículo */
-        .verse-banner {
-            background-color: var(--marron-suave);
-            color: white;
-            padding: 5rem 2rem;
-            text-align: center;
-        }
-
-        .verse-banner blockquote {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Botón de Acción */
-        .btn-contacto {
-            display: inline-block;
-            margin-top: 2rem;
-            padding: 1rem 2rem;
-            background: var(--acento);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 500;
+            padding: 30px;
+            border-radius: 20px;
+            border-bottom: 5px solid var(--secundario);
             transition: 0.3s;
         }
+        .card:hover { transform: scale(1.05); }
 
-        .btn-contacto:hover { background: var(--marron-suave); }
-
-        footer {
-            padding: 3rem;
-            text-align: center;
-            font-size: 0.8rem;
-            color: #999;
+        /* --- COTIZAR --- */
+        .cotizar {
+            background: var(--oscuro);
+            color: var(--fondo);
         }
 
-        @media (max-width: 600px) {
-            .logo-container h1 { font-size: 1.8rem; }
+        .btn-ws {
+            background: #25d366;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: 0.3s;
         }
+        .btn-ws:hover { transform: scale(1.1); background: #128c7e; }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primario);
+        }
+
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo-container">
-            <h1>Darava's Art</h1>
-            <p class="slogan">Diseños que glorifican</p>
-        </div>
-    </header>
+    <button class="menu-btn" onclick="toggleMenu()">MENÚ</button>
 
-    <section class="intro">
-        <i>"Llevando la Palabra de Dios a cada rincón de tu vida"</i>
-        <p>Somos un emprendimiento dedicado a la sublimación con un propósito: que cada producto sea un recordatorio de Su amor y una oportunidad para compartir el Evangelio.</p>
-    </section>
-
-    <div class="servicios-container">
-        <div class="card">
-            <h3>Personales</h3>
-            <p>Tazas, camisetas y detalles únicos para tu día a día o para regalar bendiciones a quienes amas.</p>
-        </div>
-
-        <div class="card">
-            <h3>Eclesiásticos</h3>
-            <p>Equipamos a tu ministerio o congregación con diseños para eventos, retiros y sociedades.</p>
-        </div>
-
-        <div class="card">
-            <h3>Empresariales</h3>
-            <p>Soluciones de sublimación para negocios que buscan calidad con valores éticos y profesionales.</p>
-        </div>
+    <div class="side-menu" id="sideMenu">
+        <a href="#inicio" onclick="toggleMenu()">Inicio</a>
+        <a href="#quien-soy" onclick="toggleMenu()">Quién Soy</a>
+        <a href="#servicios" onclick="toggleMenu()">Servicios</a>
+        <a href="#cotizar" onclick="toggleMenu()">Cotizar</a>
     </div>
 
-    <section class="verse-banner">
-        <blockquote>"Haced todo para la gloria de Dios."</blockquote>
-        <p style="margin-top: 1rem; opacity: 0.8;">1 Corintios 10:31</p>
-        <a href="https://wa.me/tu-numero" class="btn-contacto">Cotizar por WhatsApp</a>
+    <section id="inicio" class="home visible">
+        <h1>Darava's Art</h1>
+        <p>Sublimación con propósito cristiano</p>
+        <div style="margin-top: 30px; font-size: 2rem;">🕊️</div>
     </section>
 
-    <footer>
-        <p>&copy; 2024 Darava's Art - Hecho con fe para personas como tú.</p>
-    </footer>
+    <section id="quien-soy" class="quien-soy">
+        <div class="profile-img">🎨</div>
+        <h2>Quién Soy</h2>
+        <p style="max-width: 600px;">
+            Soy una persona apasionada por el arte y la fe. En Darava's Art, mi misión es simple: 
+            usar mis manos para crear diseños que no solo adornen, sino que hablen del amor de Dios. 
+            Cada pieza que sale de mi taller está hecha con oración y dedicación para que llegue a tu hogar como una bendición.
+        </p>
+    </section>
+
+    <section id="servicios" class="servicios">
+        <h2>Lo que hacemos</h2>
+        <div class="grid-servicios">
+            <div class="card">
+                <h3>Personales</h3>
+                <p>Para tu día a día: tazas, termos y detalles que te recuerden Sus promesas.</p>
+            </div>
+            <div class="card">
+                <h3>Eclesiásticos</h3>
+                <p>Apoyo a iglesias y ministerios con uniformes y recordatorios para eventos sagrados.</p>
+            </div>
+            <div class="card">
+                <h3>Empresariales</h3>
+                <p>Llevamos tus valores corporativos a productos de alta calidad para tus clientes.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="cotizar" class="cotizar">
+        <h2>¿Tienes un proyecto?</h2>
+        <p>Hagámoslo realidad. Cuéntame tu idea y te ayudaré con un presupuesto a tu medida.</p>
+        <a href="https://wa.me/tu-numero-aqui" class="btn-ws">Solicitar Cotización</a>
+    </section>
+
+    <script>
+        // Función para el menú
+        function toggleMenu() {
+            document.getElementById('sideMenu').classList.toggle('active');
+        }
+
+        // Animación de aparición al hacer scroll
+        const sections = document.querySelectorAll('section');
+        const observerOptions = { threshold: 0.3 };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
 
 </body>
 </html>
