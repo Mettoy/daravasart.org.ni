@@ -3,209 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Darava's Art | Sublimación & Diseño</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
+    <title>Darava's Art | Diseños con Propósito</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500&family=Playfair+Display:ital,wght@0,400;1,600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #fdfbfb;
-            --accent: #d4af37; /* Dorado sutil */
-            --text: #2c2c2c;
-            --soft-gray: #f4f4f4;
+            --beige-claro: #fcf9f5;
+            --marron-suave: #8e7d71;
+            --texto: #4a4a4a;
+            --blanco: #ffffff;
+            --acento: #d4b99b;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--primary);
-            color: var(--text);
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--beige-claro);
+            color: var(--texto);
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
-        /* Navegación */
-        nav {
-            padding: 2rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: absolute;
-            width: 100%;
-            z-index: 10;
+        /* Header & Logo */
+        header {
+            text-align: center;
+            padding: 3rem 1rem;
+            background: var(--blanco);
         }
 
-        .logo {
-            font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
-            letter-spacing: 3px;
+        .logo-container h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--marron-suave);
+            letter-spacing: 2px;
+        }
+
+        .slogan {
+            font-size: 0.9rem;
             text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--acento);
+            margin-top: 5px;
         }
 
-        .nav-links {
-            display: flex;
-            list-style: none;
+        /* Hero / Propósito */
+        .intro {
+            max-width: 800px;
+            margin: 4rem auto;
+            text-align: center;
+            padding: 0 2rem;
+        }
+
+        .intro i {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 1.5rem;
+            color: var(--marron-suave);
+        }
+
+        /* Servicios */
+        .servicios-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
+            padding: 2rem 10%;
+            margin-bottom: 5rem;
         }
 
-        .nav-links a {
+        .card {
+            background: var(--blanco);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+            transition: transform 0.3s ease;
+            border: 1px solid #f0eee9;
+        }
+
+        .card:hover { transform: translateY(-5px); }
+
+        .card h3 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+            color: var(--marron-suave);
+            font-size: 1.5rem;
+        }
+
+        .card p { font-size: 0.95rem; color: #777; }
+
+        /* Banner de Versículo */
+        .verse-banner {
+            background-color: var(--marron-suave);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .verse-banner blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Botón de Acción */
+        .btn-contacto {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            background: var(--acento);
+            color: white;
             text-decoration: none;
-            color: var(--text);
-            font-size: 0.8rem;
-            letter-spacing: 1px;
+            border-radius: 50px;
+            font-weight: 500;
             transition: 0.3s;
         }
 
-        .nav-links a:hover {
-            color: var(--accent);
-        }
+        .btn-contacto:hover { background: var(--marron-suave); }
 
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), 
-                        url('https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&q=80') center/cover;
-        }
-
-        .hero h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 4rem;
-            font-weight: 400;
-            margin-bottom: 1rem;
-            animation: fadeIn 2s ease-in;
-        }
-
-        .hero p {
-            font-size: 1rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: #777;
-        }
-
-        /* Galería Minimalista */
-        .gallery {
-            padding: 5rem 10%;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            background: var(--soft-gray);
-            aspect-ratio: 1 / 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s ease;
-            filter: grayscale(20%);
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.05);
-            filter: grayscale(0%);
-        }
-
-        .item-info {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            background: white;
-            padding: 0.5rem 1rem;
-            font-size: 0.7rem;
-            letter-spacing: 1px;
-        }
-
-        /* Footer */
         footer {
-            padding: 4rem;
+            padding: 3rem;
             text-align: center;
-            background: #fff;
-            border-top: 1px solid #eee;
-        }
-
-        .cta-button {
-            display: inline-block;
-            margin-top: 2rem;
-            padding: 1rem 2.5rem;
-            border: 1px solid var(--text);
-            text-decoration: none;
-            color: var(--text);
             font-size: 0.8rem;
-            letter-spacing: 2px;
-            transition: 0.4s;
+            color: #999;
         }
 
-        .cta-button:hover {
-            background: var(--text);
-            color: white;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .nav-links { display: none; }
+        @media (max-width: 600px) {
+            .logo-container h1 { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">Darava's Art</div>
-        <ul class="nav-links">
-            <li><a href="#">INICIO</a></li>
-            <li><a href="#">PRODUCTOS</a></li>
-            <li><a href="#">PROCESO</a></li>
-            <li><a href="#">CONTACTO</a></li>
-        </ul>
-    </nav>
+    <header>
+        <div class="logo-container">
+            <h1>Darava's Art</h1>
+            <p class="slogan">Diseños que glorifican</p>
+        </div>
+    </header>
 
-    <section class="hero">
-        <h1>Darava's Art</h1>
-        <p>Sublimación Consciente & Arte Personalizado</p>
-        <a href="#contacto" class="cta-button">EXPLORAR COLECCIÓN</a>
+    <section class="intro">
+        <i>"Llevando la Palabra de Dios a cada rincón de tu vida"</i>
+        <p>Somos un emprendimiento dedicado a la sublimación con un propósito: que cada producto sea un recordatorio de Su amor y una oportunidad para compartir el Evangelio.</p>
     </section>
 
-    <section class="gallery">
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1576781297209-e8203e482200?auto=format&fit=crop&q=80" alt="Taza sublimada">
-            <div class="item-info">01 / CERÁMICA</div>
+    <div class="servicios-container">
+        <div class="card">
+            <h3>Personales</h3>
+            <p>Tazas, camisetas y detalles únicos para tu día a día o para regalar bendiciones a quienes amas.</p>
         </div>
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80" alt="Textil personalizado">
-            <div class="item-info">02 / TEXTILES</div>
+
+        <div class="card">
+            <h3>Eclesiásticos</h3>
+            <p>Equipamos a tu ministerio o congregación con diseños para eventos, retiros y sociedades.</p>
         </div>
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80" alt="Arte digital">
-            <div class="item-info">03 / DISEÑO</div>
+
+        <div class="card">
+            <h3>Empresariales</h3>
+            <p>Soluciones de sublimación para negocios que buscan calidad con valores éticos y profesionales.</p>
         </div>
+    </div>
+
+    <section class="verse-banner">
+        <blockquote>"Haced todo para la gloria de Dios."</blockquote>
+        <p style="margin-top: 1rem; opacity: 0.8;">1 Corintios 10:31</p>
+        <a href="https://wa.me/tu-numero" class="btn-contacto">Cotizar por WhatsApp</a>
     </section>
 
-    <footer id="contacto">
-        <p style="font-family: 'Cinzel'; margin-bottom: 1rem;">Contáctanos</p>
-        <p style="font-size: 0.9rem; color: #888;">hola@daravasart.com</p>
-        <div style="margin-top: 2rem;">
-            <p>© 2024 Darava's Art. Elevando lo cotidiano.</p>
-        </div>
+    <footer>
+        <p>&copy; 2024 Darava's Art - Hecho con fe para personas como tú.</p>
     </footer>
 
 </body>
