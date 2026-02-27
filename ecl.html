@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ministerios | Darava's Art</title>
+    
+    <link rel="icon" type="image/png" href="https://ibb.co/sdcVm03G">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,400&family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #fdfcfb;
+            --text: #33312f;
+            --soft: #e2deda;
+            --accent: #8c786a;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* --- NAVEGACIÓN --- */
+        nav {
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--white);
+            border-bottom: 1px solid var(--soft);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .logo-nav {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+        }
+
+        /* --- HEADER --- */
+        header {
+            padding: 70px 10% 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 7vw, 3.8rem);
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+
+        .verse {
+            font-style: italic;
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        /* --- GRID DE PRODUCTOS --- */
+        .ecl-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 20px 10% 80px;
+        }
+
+        .ecl-item {
+            background: var(--white);
+            border: 1px solid var(--soft);
+            overflow: hidden;
+            transition: 0.4s;
+            text-align: center;
+        }
+
+        .ecl-item:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .img-box {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            background: #f9f9f9;
+        }
+
+        .img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.9;
+        }
+
+        .info-box {
+            padding: 25px;
+        }
+
+        .info-box h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .info-box p {
+            font-size: 0.8rem;
+            color: #777;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- COMBO ESPECIAL --- */
+        .combo-section {
+            background: #f4f1ee;
+            margin: 0 10% 100px;
+            padding: 60px;
+            text-align: center;
+            border: 1px dashed var(--accent);
+        }
+
+        .combo-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* --- BOTÓN WHATSAPP --- */
+        .btn-order {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 16px 45px;
+            background: var(--text);
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .btn-order:hover {
+            background: var(--accent);
+        }
+
+        footer {
+            padding: 40px;
+            text-align: center;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="back-link">← Volver</a>
+        <div class="logo-nav">Darava's Art</div>
+        <div style="width: 50px;"></div>
+    </nav>
+
+    <header>
+        <h1>Servicios Eclesiásticos</h1>
+        <p class="verse">"Haced todo para la gloria de Dios" — 1 Corintios 10:31</p>
+    </header>
+
+    <section class="ecl-grid">
+        
+        <div class="ecl-item">
+            <div class="img-box">
+                <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1000&auto=format&fit=crop" alt="Llaveros Cristianos">
+            </div>
+            <div class="info-box">
+                <h3>Llaveros</h3>
+                <p>Promesas para llevar contigo</p>
+            </div>
+        </div>
+
+        <div class="ecl-item">
+            <div class="img-box">
+                <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?q=80&w=1000&auto=format&fit=crop" alt="Agendas Devocionales">
+            </div>
+            <div class="info-box">
+                <h3>Agendas Devocionales</h3>
+                <p>Organiza tu tiempo con Dios</p>
+            </div>
+        </div>
+
+        <div class="ecl-item">
+            <div class="img-box">
+                <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1000&auto=format&fit=crop" alt="Camisas Ministeriales">
+            </div>
+            <div class="info-box">
+                <h3>Camisas</h3>
+                <p>Uniformes para Ministerios y Eventos</p>
+            </div>
+        </div>
+
+        <div class="ecl-item">
+            <div class="img-box">
+                <img src="https://images.unsplash.com/photo-1572375992501-4b0892d50c69?q=80&w=1000&auto=format&fit=crop" alt="Stickers Cristianos">
+            </div>
+            <div class="info-box">
+                <h3>Stickers</h3>
+                <p>Decora con mensajes de fe</p>
+            </div>
+        </div>
+
+        <div class="ecl-item">
+            <div class="img-box">
+                <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=1000&auto=format&fit=crop" alt="Separadores de Biblia">
+            </div>
+            <div class="info-box">
+                <h3>Separadores de Biblias</h3>
+                <p>No pierdas tu lectura diaria</p>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="combo-section">
+        <h2>✨ Arma tu Combo ✨</h2>
+        <p>Ideal para regalos de sociedades, retiros espirituales o bienvenida de nuevos miembros.</p>
+        <p style="font-size: 0.9rem; margin-top: 10px; color: var(--accent);">Taza + Agenda + Separador + Camisa</p>
+        <a href="https://wa.me/TUNUMERO" class="btn-order">Consultar Precios por Mayor</a>
+    </section>
+
+    <footer>
+        © 2026 DARAVA'S ART | SIRVIENDO AL CUERPO DE CRISTO
+    </footer>
+
+</body>
+</html>
