@@ -6,20 +6,18 @@
     <title>Personales | Darava's Art</title>
     
     <link rel="icon" type="image/png" href="https://ibb.co/sdcVm03G">
-
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,400&family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg: #f8f5f2;
-            --text: #2d2a28;
-            --soft: #e5e0db;
-            --accent: #a69082;
+            --bg: #fffafb; /* Un tono rosado/blanco muy suave */
+            --text: #4a4444;
+            --soft: #f2e9e9;
+            --accent: #d4a373; /* Tono arena/dorado suave */
             --white: #ffffff;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
         
         body {
             font-family: 'Montserrat', sans-serif;
@@ -44,7 +42,7 @@
         .back-link {
             text-decoration: none;
             color: var(--text);
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             letter-spacing: 2px;
             text-transform: uppercase;
             font-weight: 600;
@@ -53,171 +51,206 @@
         .logo-nav {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.4rem;
-            font-weight: bold;
-            color: var(--text);
+            font-weight: 600;
         }
 
-        /* --- CABECERA --- */
+        /* --- HEADER --- */
         header {
-            padding: 60px 10% 40px;
+            padding: 70px 10% 40px;
             text-align: center;
         }
 
         header h1 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-size: clamp(2.5rem, 7vw, 3.5rem);
             font-weight: 400;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
         }
 
-        .divider {
-            width: 40px;
-            height: 1px;
-            background: var(--accent);
-            margin: 20px auto;
+        .subtitle {
+            color: var(--accent);
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
         }
 
-        /* --- CATÁLOGO --- */
-        .catalog {
+        /* --- GRID DE PRODUCTOS --- */
+        .per-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-            padding: 20px 10% 100px;
+            gap: 25px;
+            padding: 20px 10% 80px;
         }
 
-        .item {
-            display: flex;
-            flex-direction: column;
-            text-decoration: none;
-            color: var(--text);
-            transition: 0.4s;
-        }
-
-        .img-container {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            overflow: hidden;
-            background: #fff;
-            margin-bottom: 20px;
+        .per-item {
+            background: var(--white);
             border: 1px solid var(--soft);
+            transition: 0.4s ease;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            overflow: hidden;
         }
 
-        .img-container img {
+        .per-item:hover {
+            box-shadow: 0 15px 30px rgba(212, 163, 115, 0.15);
+            transform: translateY(-8px);
+            border-color: var(--accent);
+        }
+
+        .img-box {
+            width: 100%;
+            height: 320px;
+            overflow: hidden;
+        }
+
+        .img-box img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s ease;
+            transition: 0.5s;
         }
 
-        .item:hover img {
+        .per-item:hover .img-box img {
             transform: scale(1.05);
         }
 
-        .item h3 {
+        .info-box {
+            padding: 25px;
+        }
+
+        .info-box h3 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.6rem;
             margin-bottom: 5px;
         }
 
-        .item span {
+        .info-box p {
             font-size: 0.75rem;
+            color: #999;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent);
+            letter-spacing: 1px;
         }
 
         /* --- SECCIÓN CONTACTO --- */
         .cta-section {
-            background: var(--white);
+            background: #4a4444;
+            color: white;
             padding: 80px 10%;
             text-align: center;
-            border-top: 1px solid var(--soft);
         }
 
-        .btn-ws {
+        .cta-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .btn-wa {
             display: inline-block;
-            margin-top: 30px;
-            padding: 18px 50px;
-            background: var(--text);
-            color: var(--white);
+            margin-top: 20px;
+            padding: 18px 45px;
+            background: var(--accent);
+            color: white;
             text-decoration: none;
+            text-transform: uppercase;
             letter-spacing: 2px;
             font-size: 0.8rem;
-            text-transform: uppercase;
+            font-weight: 600;
             transition: 0.3s;
         }
 
-        .btn-ws:hover { background: var(--accent); }
+        .btn-wa:hover {
+            background: #bc8a5f;
+            transform: scale(1.05);
+        }
 
         footer {
             padding: 40px;
             text-align: center;
             font-size: 0.7rem;
             letter-spacing: 1px;
-            color: #999;
+            opacity: 0.6;
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="index.html" class="back-link">← Volver</a>
+        <a href="index.html" class="back-link">← Menú Principal</a>
         <div class="logo-nav">Darava's Art</div>
-        <div style="width: 50px;"></div>
+        <div style="width: 80px;"></div>
     </nav>
 
     <header>
-        <h1>Servicios Personales</h1>
-        <div class="divider"></div>
-        <p style="max-width: 600px; margin: 0 auto; font-weight: 200;">
-            Excelencia en cada detalle. Personalizamos tus momentos favoritos con elegancia y un propósito eterno.
-        </p>
+        <h1>Regalos con Alma</h1>
+        <p class="subtitle">Detalles únicos para personas especiales</p>
     </header>
 
-    <section class="catalog">
+    <section class="per-grid">
         
-        <div class="item">
-            <div class="img-container">
-                <img src="https://media.istockphoto.com/id/1396769102/photo/best-papa-ever-mug-for-fathers-day-morning-coffee-in-bring-morning-natural-light.jpg?b=1&s=612x612&w=0&k=20&c=m8GvdiM79u2exQxpOg5BzZbpQ6L8mnmxmT6a3Ojft8I=" alt="Tazas personalizadas">
+        <a href="https://wa.me/50585824515?text=Hola!%20Me%20gustaría%20personalizar%20una%20Agenda%20Personal" class="per-item">
+            <div class="img-box">
+                <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?q=80&w=1000&auto=format&fit=crop" alt="Agendas">
             </div>
-            <span>Cerámica & Porcelana</span>
-            <h3>Tazas & Mugs</h3>
-        </div>
+            <div class="info-box">
+                <h3>Agendas Personalizadas</h3>
+                <p>Tu nombre y estilo en cada página</p>
+            </div>
+        </a>
 
-        <div class="item">
-            <div class="img-container">
-                <img src="https://media.istockphoto.com/id/1174311703/photo/gray-hoodie-mock-up.jpg?b=1&s=612x612&w=0&k=20&c=2os-_KCh3_gcpitm6jZ_9irwmv4iu9Rh4UwORDBeUx8=" alt="Hoodies personalizadas">
+        <a href="https://wa.me/50585824515?text=Hola!%20Quiero%20una%20Taza%20Personalizada" class="per-item">
+            <div class="img-box">
+                <img src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?q=80&w=1000&auto=format&fit=crop" alt="Tazas">
             </div>
-            <span>Algodón & Estilo</span>
-            <h3>Hoodies & Suéteres</h3>
-        </div>
+            <div class="info-box">
+                <h3>Tazas Únicas</h3>
+                <p>Para tus cafés con más cariño</p>
+            </div>
+        </a>
 
-        <div class="item">
-            <div class="img-container">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQocWHRhEhfn5kBK32IBB-DNt7BN_Cc1-b8uw&s" alt="Retrateras personalizadas">
+        <a href="https://wa.me/50585824515?text=Hola!%20Me%20interesan%20los%20Separadores%20personalizados" class="per-item">
+            <div class="img-box">
+                <img src="https://images.unsplash.com/photo-1544133782-b621fe019ca0?q=80&w=1000&auto=format&fit=crop" alt="Separadores">
             </div>
-            <span>Recuerdos Eternos</span>
-            <h3>Retrateras & Cuadros</h3>
-        </div>
+            <div class="info-box">
+                <h3>Separadores</h3>
+                <p>El complemento ideal para tus libros</p>
+            </div>
+        </a>
 
-        <div class="item">
-            <div class="img-container">
-                <img src="https://media.istockphoto.com/id/1199895704/photo/black-and-white-water-sport-bottles-mockup-isolated-on-white-background.jpg?b=1&s=612x612&w=0&k=20&c=3Kjcr9_P9dmhC4PLwFksfEsfGjOvqf3FRInQNyxyrGo=" alt="Termos personalizados">
+        <a href="https://wa.me/50585824515?text=Hola!%20Quiero%20cotizar%20un%20Termo%20Personalizado" class="per-item">
+            <div class="img-box">
+                <img src="https://images.unsplash.com/photo-1519750783826-e2420f4d687f?q=80&w=1000&auto=format&fit=crop" alt="Termos">
             </div>
-            <span>Acompaña tu hidratación</span>
-            <h3>Termos & Botellas</h3>
-        </div>
+            <div class="info-box">
+                <h3>Termos</h3>
+                <p>Mantén tu bebida fría o caliente con estilo</p>
+            </div>
+        </a>
+
+        <a href="https://wa.me/50585824515?text=Hola!%20Deseo%20información%20sobre%20Comida%20Empacada%20para%20regalo" class="per-item">
+            <div class="img-box">
+                <img src="https://images.unsplash.com/photo-1547573854-74d2a71d0826?q=80&w=1000&auto=format&fit=crop" alt="Comida">
+            </div>
+            <div class="info-box">
+                <h3>Comida Empacada</h3>
+                <p>Detalles deliciosos listos para regalar</p>
+            </div>
+        </a>
 
     </section>
 
     <section class="cta-section">
-        <h2>¿Deseas iniciar tu pedido?</h2>
-        <p>Escríbeme para enviarte una cotización personalizada según tu diseño.</p>
-        <a href="https://wa.me/50585824515?text=Hola,%20me%20gustaría%20cotizar%20un%20servicio%20personalizado" class="btn-ws">WhatsApp Directo</a>
+        <h2>¿Tienes una idea en mente?</h2>
+        <p>Cuéntanos qué necesitas y lo creamos exclusivamente para ti.</p>
+        <a href="https://wa.me/50585824515?text=Hola!%20Tengo%20una%20idea%20para%20un%20regalo%20personalizado" class="btn-wa">Escríbenos ahora</a>
     </section>
 
     <footer>
-        © 2026 DARAVA'S ART | CALIDAD Y FE EN CADA DISEÑO
+        © 2026 DARAVA'S ART | HECHO CON AMOR
     </footer>
 
 </body>
